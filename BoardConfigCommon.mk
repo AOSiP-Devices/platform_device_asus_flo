@@ -27,17 +27,27 @@ TARGET_NO_BOOTLOADER := true
 BOARD_KERNEL_BASE := 0x80200000
 BOARD_KERNEL_PAGESIZE := 2048
 # BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=msm8960 maxcpus=2
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=flo user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.selinux=permissive androidboot.hardware=flo user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3
 BOARD_KERNEL_CMDLINE += vmalloc=340M
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 
+# Rom Toolchain
+TARGET_GCC_VERSION_EXP := 5.3
+
+# Uber Optimizations
+export CLANG_O3 := true
+#export STRICT_ALIASING := false
+export KRAIT_TUNINGS := true
+#export GRAPHITE_OPTS := false
+export ENABLE_GCCONLY := true
+
 # Build kernel inline
-TARGET_KERNEL_SOURCE := kernel/asus/flo
-TARGET_KERNEL_CONFIG := flo_defconfig
-TARGET_VARIANT_CONFIG := flo_defconfig
-TARGET_SELINUX_CONFIG := flo_defconfig
-KERNEL_TOOLCHAIN_PREFIX := arm-eabi-
-KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.8/bin
+#TARGET_KERNEL_SOURCE := kernel/asus/flo
+#TARGET_KERNEL_CONFIG := flo_defconfig
+#TARGET_VARIANT_CONFIG := flo_defconfig
+#TARGET_SELINUX_CONFIG := flo_defconfig
+#KERNEL_TOOLCHAIN_PREFIX := arm-eabi-
+#KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.8/bin
 
 BOARD_USES_ALSA_AUDIO:= true
 BOARD_USES_LEGACY_ALSA_AUDIO:= false
