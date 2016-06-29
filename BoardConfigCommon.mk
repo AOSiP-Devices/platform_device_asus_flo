@@ -32,7 +32,7 @@ BOARD_KERNEL_CMDLINE += vmalloc=340M
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 
 # Rom Toolchain
-TARGET_GCC_VERSION_EXP := 5.3
+TARGET_GCC_VERSION_EXP := 5.x
 
 # Uber Optimizations
 export CLANG_O3 := true
